@@ -88,5 +88,3 @@ services:
 volumes:
   pgdata:
 
-volumes:
-  pgdata:
