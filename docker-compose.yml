@@ -39,6 +39,8 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3001
+    ports:
+      - "3001:3001"
 
       DB_HOST: db
       DB_PORT: 5432
@@ -71,6 +73,8 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3000
+    ports:
+      - "3000:3000"
 
 
 volumes:
