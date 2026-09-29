@@ -39,23 +39,20 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3001
-    ports:
-      - "3001:3001"
-
       DB_HOST: db
       DB_PORT: 5432
       DB_USERNAME: ${POSTGRES_USER:-postgres}
       DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD is required}
       DB_NAME: ${POSTGRES_DB:-carsu_lead}
-
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
-
       FRONTEND_URL: ${FRONTEND_URL:?FRONTEND_URL is required}
-
       HR_EMAIL: ${HR_EMAIL}
       MAIL_USER: ${MAIL_USER}
       MAIL_PASS: ${MAIL_PASS}
       MAIL_FROM: ${MAIL_FROM}
+
+    ports:
+      - "3001:3001"
 
     depends_on:
       db:
@@ -73,6 +70,7 @@ services:
       NODE_ENV: production
       HOST: 0.0.0.0
       PORT: 3000
+
     ports:
       - "3000:3000"
 
