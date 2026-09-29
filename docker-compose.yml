@@ -26,12 +26,15 @@ services:
       start_period: 10s
 
 
-  backend:
-    build:
+    backend:
+     build:
       context: ./backend
       dockerfile: Dockerfile
 
     restart: unless-stopped
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
     shm_size: "2gb"
 
@@ -50,7 +53,19 @@ services:
       MAIL_USER: ${MAIL_USER}
       MAIL_PASS: ${MAIL_PASS}
       MAIL_FROM: ${MAIL_FROM}
+      LDAP_EMPLOYEE_URL: ${LDAP_EMPLOYEE_URL}
+      LDAP_EMPLOYEE_ADMIN_DN: ${LDAP_EMPLOYEE_ADMIN_DN}
+      LDAP_EMPLOYEE_ADMIN_PASS: ${LDAP_EMPLOYEE_ADMIN_PASS}
+      LDAP_EMPLOYEE_SEARCH_BASE: ${LDAP_EMPLOYEE_SEARCH_BASE}
+      LDAP_EMPLOYEE_USERNAME_ATTRIB: ${LDAP_EMPLOYEE_USERNAME_ATTRIB}
+      LDAP_EMPLOYEE_DEFAULTPASS_ATTRIB: ${LDAP_EMPLOYEE_DEFAULTPASS_ATTRIB}
 
+    ports:
+      - "3001:3001"
+
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - "3001:3001"
 
