@@ -16,6 +16,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3001
 ENV HOST=0.0.0.0
+# Store Chrome in a folder the "node" user can read (added)
+ENV PUPPETEER_CACHE_DIR=/app/.cache/puppeteer
 
 # Install Chromium system dependencies for Puppeteer PDF generation
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -58,6 +60,9 @@ COPY package*.json ./
 RUN npm ci --only=production && npm cache clean --force
 
 COPY --from=builder /app/dist ./dist
+
+# Give the node user access to the app and the Chrome cache (added)
+RUN chown -R node:node /app
 
 USER node
 
