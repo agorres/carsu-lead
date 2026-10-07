@@ -3428,6 +3428,13 @@ input.error, select.error { border-color: var(--error); }
   font-size: 13px;
   border-radius: 6px;
 }
+.dynamic-table td select {
+  width: 100%;
+  min-width: 130px;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
 .table-actions { display: flex; gap: 10px; margin-top: 12px; }
 .btn-add-row {
   display: inline-flex;
