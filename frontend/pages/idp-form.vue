@@ -5407,6 +5407,13 @@ textarea {
   font-size: 13px;
   border-radius: 6px;
 }
+.dynamic-table td select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
 .proact-table td input,
 .proact-table td select,
 .proact-table td textarea {
