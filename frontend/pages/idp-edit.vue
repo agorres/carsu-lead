@@ -3430,7 +3430,7 @@ input.error, select.error { border-color: var(--error); }
 }
 .dynamic-table td select {
   width: 100%;
-  min-width: 0;
+  min-width: 130px;
   max-width: 100%;
   box-sizing: border-box;
   margin-bottom: 0;
